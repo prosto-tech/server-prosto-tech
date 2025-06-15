@@ -18,6 +18,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_user!
+    p "id: #{payload[0]['user_id']}"
     @current_user = User.find_by(id: payload[0]['user_id'])
   end
 

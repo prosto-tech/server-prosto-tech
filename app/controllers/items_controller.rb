@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    p "params: #{params}"
     current_user = current_user!
 
     item = current_user.items.create(item_params)
