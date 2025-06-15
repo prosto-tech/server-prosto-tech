@@ -8,10 +8,8 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://client-prosto-tech.onrender.com/'
+    origins '*'
 
-    resource '*',
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    resource '*', headers: :any, methods: %i[get patch put delete post options]
   end
 end
