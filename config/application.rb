@@ -40,7 +40,7 @@ module ElectroBackups
     config.api_only = true
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
+        origins 'https://client-prosto-tech.onrender.com/'
         resource '*', headers: :any, methods: %i[get patch put delete post options]
       end
     end
