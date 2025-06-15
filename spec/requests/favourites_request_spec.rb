@@ -10,7 +10,7 @@ RSpec.describe 'Favourites', type: :request do
 
   describe 'POST /favourites' do
     it 'adds a item to list of favourites' do
-      post '/api/v1/favourites', params: { item_id: item.id },
+      post 'favourites', params: { item_id: item.id },
                                  headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
 
       expect(response).to have_http_status(:success)

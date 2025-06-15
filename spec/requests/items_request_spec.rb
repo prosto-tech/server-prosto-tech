@@ -11,7 +11,7 @@ RSpec.describe 'Items', type: :request do
     end
     
     it 'returns error when there is no current logged in user' do
-      get '/api/v1/items'
+      get 'items'
 
       expect(response).to have_http_status(:unauthorized)
       expect(json).to eq({
@@ -20,7 +20,7 @@ RSpec.describe 'Items', type: :request do
     end
 
     it 'returns all items' do
-      get '/api/v1/items', headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
+      get 'items', headers: { 'Authorization' => AuthenticationTokenService.call(user.id) }
 
       expect(response).to have_http_status(:success)
       expect(json.size).to eq(1)
