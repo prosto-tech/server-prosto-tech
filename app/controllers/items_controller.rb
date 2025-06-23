@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # before_action :authenticate_request!
-  rescue_from NoMethodError, with: :no_user
+  # rescue_from NoMethodError, with: :no_user
   MAX_PAGINATION_LIMIT = 20
 
   def index
@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
     items = Item.limit(limit).offset(params[:offset])
 
     render json: ItemsRepresenter.new(items, current_user.id).as_json
+    render json: ItemsRepresenter.new(items, 1).as_json
   end
 
   def create
