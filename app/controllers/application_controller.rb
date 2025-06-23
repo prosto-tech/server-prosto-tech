@@ -19,7 +19,7 @@ class ApplicationController < ActionController::API
 
   def current_user!
     p "id: #{payload[0]['user_id']}"
-    @current_user = User.find_by(id: payload[0]['user_id'])
+    @current_user = User.find_by(id: payload[0]['user_id'] || params("user_id"))
   end
 
   def invalid_authentication
