@@ -10,7 +10,7 @@ class AuthenticationController < ApplicationController
 
       render json: AuthenticateRepresenter.new(user).as_json, status: :created
     else
-      render json: { error: 'No such user' }, status: :unauthorized
+      render json: { error: 'Немає такого користувача' }, status: :unauthorized
     end
   end
 

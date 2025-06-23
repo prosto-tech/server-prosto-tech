@@ -25,6 +25,8 @@ class ItemsController < ApplicationController
 
   def show
     current_user = current_user!
+    p "current_user: #{current_user}"
+    p "params: params"
     item = Item.find(params[:id])
 
     render json: ItemRepresenter.new(item, current_user.id).as_json
@@ -50,6 +52,6 @@ class ItemsController < ApplicationController
   end
 
   def no_user
-    render json: { error: 'You need to login before you can add a item' }, status: :unauthorized
+    render json: { error: 'Для початку потрібно увійти' }, status: :unauthorized
   end
 end

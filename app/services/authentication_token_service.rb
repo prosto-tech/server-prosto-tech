@@ -23,6 +23,6 @@ class AuthenticationTokenService
   end
 
   def self.expired_token
-    render json: { error: 'Expired token! login again' }, status: :unauthorized
+    render json: { error: 'Токен застарів, увійдіть знову' }, status: :unauthorized
   end
 end
