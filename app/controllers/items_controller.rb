@@ -4,17 +4,16 @@ class ItemsController < ApplicationController
   MAX_PAGINATION_LIMIT = 20
 
   def index
-    # current_user = current_user!
+    current_user = current_user!
     items = Item.limit(limit).offset(params[:offset])
 
-    render json: ItemsRepresenter.new(items, 1).as_json
+    render json: ItemsRepresenter.new(items, current_user.id).as_json
   end
 
   def create
-    p "params: #{params}"
     current_user = current_user!
 
-    item = current_user.items.create(item_params)
+    item = current_user.items.create(item_params, current_user.id)
 
     if item.save
       render json: ItemRepresenter.new(item).as_json, status: :created
@@ -25,8 +24,6 @@ class ItemsController < ApplicationController
 
   def show
     current_user = current_user!
-    p "current_user: #{current_user}"
-    p "params: params"
     item = Item.find(params[:id])
 
     render json: ItemRepresenter.new(item, current_user.id).as_json
