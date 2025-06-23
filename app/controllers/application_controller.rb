@@ -35,6 +35,8 @@ class ApplicationController < ActionController::API
   def payload
     auth_header = request.headers['Authorization']
     token = auth_header.split(' ').last
+
+    Rails.logger.debug "Extracted Token: #{token}"
     AuthenticationTokenService.decode(token)
   rescue StandardError
     nil
