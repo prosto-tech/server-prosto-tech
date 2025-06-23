@@ -1,2 +1,2 @@
-# ecoway-server
-server part of diploma "Electro backup"
+# prosto-tech-server
+server part of diploma "Просто Тех"
